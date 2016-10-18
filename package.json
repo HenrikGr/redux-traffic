@@ -1,7 +1,7 @@
 {
-  "name": "book-search",
+  "name": "traffic stoplight demo",
   "version": "1.0.0",
-  "description": "A book search application that uses React and Redux",
+  "description": "A traffic stoplight application that uses React and Redux",
   "main": "index.js",
   "dependencies": {
     "eslint": "^3.2.0",

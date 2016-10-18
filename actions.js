@@ -1,5 +1,5 @@
 /*
- * Description: 
+ * Description: Actions for the application
  *
  * Author:  Henrik
  * File:    

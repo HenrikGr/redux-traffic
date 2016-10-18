@@ -11,10 +11,12 @@
 'use strict';
 
 /**
- * The application's state — in this case, a string whose value is either GO, STOP, or CAUTION— is created by the
- * reducer() function.
+ * The application's state in this case, a string whose value is either GO, STOP, or CAUTION
+ * is created by the reducer() function.
  *
- * The reducer() function returns a new state given the current state and an action that describes a state change.
+ * The reducer() function returns a new state given the current state and an action that
+ * describes a state change.
+ *
  * Notice that the reducer() function returns GO when the state is undefined, as is initially the case.
  *
  * @param state

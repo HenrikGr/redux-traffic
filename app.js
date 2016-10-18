@@ -1,5 +1,5 @@
 /*
- * Description: This is the entry point of the application.
+ * Description: The app components
  *
  * The App component imports and renders two other components
  * - Stoplight

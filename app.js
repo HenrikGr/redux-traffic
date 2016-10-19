@@ -14,24 +14,20 @@
  */
 'use strict';
 
-// Module dependencies
 import React, { Component } from 'react';
+import StoplightContainer from './stoplight-container';
+import ButtonContainer from './button-container';
+import { createStore } from 'redux';
+import reducer from './reducer';
 
-// Import Stoplight component
-import { Stoplight } from './stoplight';
-
-// Import Buttons component
-import { Buttons } from './buttons';
-
-/**
- * App component
- */
 export class App extends Component {
   render() {
+    const store = createStore(reducer);
+    
     return(
       <div>
-        <Stoplight store={this.props.store} />
-        <Buttons store={this.props.store} />
+        <StoplightContainer store={store}/>
+        <ButtonContainer store={store}/>
       </div>
     )
   }

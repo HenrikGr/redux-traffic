@@ -1,5 +1,5 @@
 {
-  "name": "traffic stoplight demo",
+  "name": "stoplight-demo",
   "version": "1.0.0",
   "description": "A traffic stoplight application that uses React and Redux",
   "main": "index.js",

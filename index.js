@@ -1,8 +1,9 @@
 /*!
  * Description: The application entry point module
  *
- * When the application starts, it creates a Redux store with the application's reducer. *
- * Notice that the code sets the Redux store to an App property of the same name.
+ * Properties that you specify for Provider become automatically available to any React components contained in the
+ * Provider component. In this case, the App component — and the StoplightContainer and ButtonContainer components
+ * contained in the App component — automatically have access to the Redux store.
  *
  *
  * Author:  Henrik Grönvall
@@ -12,21 +13,18 @@
  */
 'use strict';
 
-// Modeule dependencies
+// Module dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { Provider } from 'react-redux';
 
-// Import the reducer
 import reducer from './reducer';
-
-// Import App component
 import { App } from './app';
 
-// Render App
-ReactDOM.render(<App store={createStore(reducer, composeWithDevTools())}/>,
-  document.getElementById('root'));
-
-
-
+ReactDOM.render(
+  <Provider store={createStore(reducer)}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);

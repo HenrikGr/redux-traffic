@@ -82,3 +82,14 @@ The Provider component is a convenience so you don't need to manually pass the s
 application your component hierarchy. Components that you nest inside the Provider component automatically have 
 access to the Redux store. The connect() function connects a presentation component to the Redux store, so that 
 the component is updated whenever the store changes.
+
+**Whats next?**
+
+This application shows the concept of using redux and react-redux, the next application should cover topics such as;
+- Implementing and using action creators
+- Combining reducers
+- Creating asynchronous actions
+- Implementing undo and redo
+- Implementing a state timeline
+
+Check out the redux-book repository form more information.

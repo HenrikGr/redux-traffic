@@ -1,19 +1,10 @@
 /*
- * Description: Traffic light button component
+ * Description: Button component
  *
- * In this module, the code for the Buttons component you can see how the
- * buttons initiate state changes.
+ * The Buttons component uses its go, caution, and stop properties, which are all functions, as callbacks for
+ * each button's onClick handler. Those properties come from the ButtonContainer component.
  *
- * When a button is rendered, it obtains a reference to the application state by
- * calling the Redux store's getState() method.
- *
- * The Buttons component then uses the state to configure the disabled state of the buttons.
- *
- * When the user clicks a button, the button's onClick() callback calls the Redux
- * store's dispatch() method, passing an appropriate action.
- *
- * The component subscribe to the Redux store and uses forceUpdate to reflect state changes
- * to the buttons.
+ * Notice that, like the Stoplight component, the Buttons component is a functional stateless component.
  *
  *
  * Author:  Henrik
@@ -24,50 +15,33 @@
  */
 'use strict';
 
-// Modeule dependencies
+// Module dependencies
 import React, { Component } from 'react';
 
-// Import actions
-import { goAction, cautionAction, stopAction } from './actions';
 
-/**
- * Button component
- */
-export class Buttons extends Component {
-  
-  // Subscribe to state changes
-  componentWillMount() {
-    this.props.store.subscribe(() => {
-      this.forceUpdate();
-    });
-  }
-  
-  render() {
-    
-    // Get current state from Redux store
-    const state = this.props.store.getState();
-    
-    return(
-      <div style={{textAlign: 'center'}}>
-        <button
-          onClick={() => {this.props.store.dispatch(goAction)}}
-          disabled={state == 'GO' || state == 'CAUTION'}
-          style={{cursor: 'pointer'}}>
-          Go
-        </button>
-        <button
-          onClick={() => {this.props.store.dispatch(cautionAction)}}
-          disabled={state == 'CAUTION' || state == 'STOP'}
-          style={{cursor: 'pointer'}}>
-          Caution
-        </button>
-        <button
-          onClick={() => {this.props.store.dispatch(stopAction)}}
-          disabled={state == 'STOP' || state == 'GO'}
-          style={{cursor: 'pointer'}}>
-          Stop
-        </button>
-      </div>
-    )
-  }
-}
+export const Buttons = ({go,caution,stop,lightStatus}) => {
+  return(
+    <div style={{textAlign: 'center'}}>
+      <button
+        onClick={go}
+        disabled={lightStatus == 'GO' || lightStatus == 'CAUTION'}
+        style={{cursor: 'pointer'}}>
+        Go
+      </button>
+      
+      <button
+        onClick={caution}
+        disabled={lightStatus == 'CAUTION' || lightStatus == 'STOP'}
+        style={{cursor: 'pointer'}}>
+        Caution
+      </button>
+      
+      <button
+        onClick={stop}
+        disabled={lightStatus == 'STOP' || lightStatus == 'GO'}
+        style={{cursor: 'pointer'}}>
+        Stop
+      </button>
+    </div>
+  )
+};

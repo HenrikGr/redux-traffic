@@ -1,30 +1,28 @@
-/*!
- * Description: The application entry point module
- *
- * Properties that you specify for Provider become automatically available to any React components contained in the
- * Provider component. In this case, the App component — and the StoplightContainer and ButtonContainer components
- * contained in the App component — automatically have access to the Redux store.
- *
- *
- * Author:  Henrik Grönvall
- * File:
- * Version: 0.0.1
- * Created on 2016-10-16
+const express = require('express');
+const config  = require('./server/config');
+
+/**
+ * We are running an express server
  */
-'use strict';
+let app = express();
 
-// Module dependencies
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+/**
+ * Tell the app to look for static files in these directories
+ */
+app.use(express.static('./server/static/'));
+app.use(express.static('./client/dist/'));
 
-import reducer from './reducer';
-import { App } from './app';
+/**
+ * Every other route returns index.html, which will contain a script tag to our application's JavaScript file(s).
+ */
+app.get('*', function (req, res){
+  res.sendFile('index.html', { root: './server/static' });
+});
 
-ReactDOM.render(
-  <Provider store={createStore(reducer)}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+/**
+ * Start server on the specified port and binding host
+ */
+app.listen(config.port, '0.0.0.0', function() {
+  // print a message when the server starts listening
+  console.log("server starting on " + config.url);
+});

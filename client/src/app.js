@@ -17,12 +17,17 @@
 import React, { Component } from 'react';
 import StoplightContainer from './stoplight-container';
 import ButtonContainer from './button-container';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducer';
+import { logger } from './middleware';
+
 
 export class App extends Component {
   render() {
-    const store = createStore(reducer);
+    
+    
+    const store = createStore(reducer, compose(applyMiddleware(logger),
+      window.devToolsExtension ? window.devToolsExtension() : f => f));
     
     return(
       <div>

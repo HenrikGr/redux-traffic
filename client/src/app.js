@@ -17,22 +17,15 @@
 import React, { Component } from 'react';
 import StoplightContainer from './stoplight-container';
 import ButtonContainer from './button-container';
-import { createStore, applyMiddleware, compose } from 'redux';
-import reducer from './reducer';
-import { logger } from './middleware';
 
 
 export class App extends Component {
   render() {
     
-    
-    const store = createStore(reducer, compose(applyMiddleware(logger),
-      window.devToolsExtension ? window.devToolsExtension() : f => f));
-    
     return(
       <div>
-        <StoplightContainer store={store}/>
-        <ButtonContainer store={store}/>
+        <StoplightContainer/>
+        <ButtonContainer/>
       </div>
     )
   }

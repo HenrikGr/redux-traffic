@@ -16,14 +16,19 @@
 // Module dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-
 import reducer from './reducer';
+
 import { App } from './app';
+import { logger } from './middleware';
+
+const store = createStore(reducer, compose(applyMiddleware(logger),
+  window.devToolsExtension ? window.devToolsExtension() : f => f));
+
 
 ReactDOM.render(
-  <Provider store={createStore(reducer)}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('app')
